@@ -1,5 +1,58 @@
+import ToyHeader from './components/ToyHeader';
+import ToyCard from './components/ToyCard';
+import toys from './toys';
+
 function App() {
-  return <h1>Toys go here</h1>;
+  return (
+    <>
+      {/* ToyHeader Component */}
+      <ToyHeader />
+
+      {/* Container Component */}
+      <div className="container">
+        {/* AddToyForm */}
+        <form className="add-toy-form">
+          <h3>Create a toy!</h3>
+          {/* Input Component */}
+          <input
+            type="text"
+            name="name"
+            value=""
+            placeholder="Enter a toy's name..."
+            className="input-text"
+          />
+          <br />
+          {/* Input Component */}
+          <input
+            type="text"
+            name="image"
+            value=""
+            placeholder="Enter a toy's image URL..."
+            className="input-text"
+          />
+          <br />
+          {/* Input Component */}
+          <input
+            type="submit"
+            name="submit"
+            value="Create Toy"
+            className="submit"
+          />
+        </form>
+      </div>
+        
+      <p style={{ textAlign:"center"}}>
+      Andy needs your help! <button id="new-toy-btn">Add a new toy!</button>
+      </p>
+      
+      {/* Collection Container */}
+      <div id="toy-collection">
+        {toys.map(toy => {
+          return <ToyCard key={toy.id} toy={toy}/>
+        })}
+      </div>
+    </>
+  );
 }
 
 /* 
